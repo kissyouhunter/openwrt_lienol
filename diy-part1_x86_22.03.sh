@@ -18,17 +18,7 @@
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
 
 # 替换index.htm文件 X86
-wget -O ./package/lean/autocore/files/x86/index.htm https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/index_x86.htm
+#wget -O ./package/lean/autocore/files/x86/index.htm https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/index_x86.htm
 
 # 替换banner
-wget -O ./package/base-files/files/etc/banner https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/banner
-
-# 替换内核
-sed -i 's/PATCHVER:=5.15/PATCHVER:=5.10/g' ./target/linux/x86/Makefile
-
-# 内核替换成 kernel 5.10.90
-
-#sed -i 's/LINUX_KERNEL_HASH-5.10.100 = d56965afc9b6a3d26d53db40ccd37fd9d15f2ca6bfd54ef6f0f8b6e92c170999/LINUX_KERNEL_HASH-5.10.101 = 0749258cb7ee47c478dfc34857e8930d41bfe0b074e80e9f57cbfa56d0ba1c8e/g' ./include/kernel-5.10
-
-#sed -i 's/LINUX_VERSION-5.10 = .100/LINUX_VERSION-5.10 = .101/g' ./include/kernel-5.10
-
+#wget -O ./package/base-files/files/etc/banner https://raw.githubusercontent.com/kissyouhunter/openwrt_lede/main/diy/x86_lede/banner
