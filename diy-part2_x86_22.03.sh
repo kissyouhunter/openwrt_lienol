@@ -28,15 +28,7 @@ sed -i 's/192.168.1.1/192.168.2.3/g' package/base-files/files/bin/config_generat
 echo "#iptables -t nat -I POSTROUTING -o eth0 -j MASQUERADE" >> package/network/config/firewall/files/firewall.user
 
 #修改build日期
-#sed -i "s/R21.6.22/R21.6.22 2021.06.27 powered by kissyouhunter/g" package/lean/default-settings/files/zzz-default-settings
-#sed -i "s/Openwrt/N1/g" package/lean/default-settings/files/zzz-default-settings
-version=$(grep "DISTRIB_REVISION=" package/default-settings/files/zzz-default-settings  | awk -F "'" '{print $2}')
-sed -i '/DISTRIB_REVISION/d' package/default-settings/files/zzz-default-settings
-#echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC-8 date "+%Y.%m.%d") powered by kissyouhunter '\" >> /etc/openwrt_release" >> package/lean/default-settings/files/zzz-default-settings
-echo "echo \"DISTRIB_REVISION='${version} $(TZ=UTC-8 date "+%Y.%m.%d") '\" >> /etc/openwrt_release" >> package/default-settings/files/zzz-default-settings
-echo "ln -s /proc/self/fd /dev/fd" >> package/default-settings/files/zzz-default-settings
-sed -i '/exit 0/d' package/default-settings/files/zzz-default-settings
-echo "exit 0" >> package/default-settings/files/zzz-default-settings
+curl -Lo ./package/default-settings/files/zzz-default-settings https://raw.githubusercontent.com/kissyouhunter/openwrt_lienol/main/diy/x86_lienol/zzz-default-settings
 
 #替换coremark ./lede/feeds/packages/utils/coremark/coremark.sh
 wget -O ./feeds/packages/utils/coremark/coremark.sh https://raw.githubusercontent.com/kissyouhunter/openwrt_lienol/main/diy/x86_lienol/coremark.sh
